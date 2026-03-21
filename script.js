@@ -1,4 +1,42 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Barras de habilidades animadas con scroll
+  const bars = document.querySelectorAll("#skills .h-full.rounded-full:not(.bg-term_gray)");
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const bar = entry.target;
+        const targetWidth = bar.style.width;
+        bar.style.width = "0%";
+        bar.style.transition = "width 1.5s ease-out";
+        
+        setTimeout(() => {
+          bar.style.width = targetWidth;
+        }, 450);
+        
+        observer.unobserve(bar);
+      }
+    });
+  }, { threshold: 0.2 });
+  
+  bars.forEach(bar => observer.observe(bar));
+  // Efecto typewriter en el hero
+  const words = ["Diseño Web", "Desarrollo Web", "Soporte IT"];
+  const elements = document.querySelectorAll(".glow-text");
+
+  elements.forEach((el, index) => {
+    const word = words[index];
+    el.textContent = "";
+    let i = 0;
+
+    setTimeout(() => {
+      const interval = setInterval(() => {
+        el.textContent += word[i];
+        i++;
+        if (i >= word.length) clearInterval(interval);
+      }, 80);
+    }, index * 600);
+  });
   lucide.createIcons();
 
   const canvas = document.getElementById("matrix-canvas");
@@ -88,5 +126,4 @@ document.addEventListener("DOMContentLoaded", () => {
       mobileMenu.classList.add("hidden");
     });
   });
-
 });
