@@ -1,271 +1,667 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio IT | Support & Web Dev</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400;700&family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        term_black: '#0a0a0c',
-                        term_green: '#4ade80',
-                        term_purple: '#c084fc',
-                        term_blue: '#60a5fa',
-                        term_gray: '#1f1f22',
-                    },
-                    fontFamily: {
-                        mono: ['"JetBrains Mono"', 'monospace'],
-                        sans:['Inter', 'sans-serif'],
-                    }
-                }
-            }
-        }
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              term_black: "#0a0a0c",
+              term_green: "#4ade80",
+              term_purple: "#c084fc",
+              term_blue: "#60a5fa",
+              term_gray: "#1f1f22",
+            },
+            fontFamily: {
+              mono: ['"JetBrains Mono"', "monospace"],
+              sans: ["Inter", "sans-serif"],
+            },
+          },
+        },
+      };
     </script>
-</head>
-<body class="bg-term_black text-gray-300 font-sans antialiased overflow-x-hidden relative min-h-screen">
-    <canvas id="matrix-canvas" class="fixed inset-0 z-0 opacity-20 pointer-events-none"></canvas>
-    
-    <div class="fixed inset-0 z-0 pointer-events-none bg-gradient-to-b from-transparent to-term_black/90"></div>
-    <div class="fixed inset-0 z-0 pointer-events-none grid-overlay"></div>
-    <div class="noise fixed inset-0 z-50 pointer-events-none opacity-[0.03]"></div>
+  </head>
+  <body
+    class="bg-term_black text-gray-300 font-sans antialiased overflow-x-hidden relative min-h-screen"
+  >
+    <canvas
+      id="matrix-canvas"
+      class="fixed inset-0 z-0 opacity-25 pointer-events-none"
+    ></canvas>
 
-    <nav class="fixed w-full z-40 top-0 border-b border-term_gray/50 bg-term_black/70 backdrop-blur-md">
-        <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-            <div class="font-mono font-bold text-term_green tracking-tighter">~/portfolio<span class="animate-pulse">_</span></div>
-            <div class="hidden md:flex gap-6 text-sm font-mono text-gray-400">
-                <a href="#about" class="hover:text-term_green transition-colors">./sobre_mi</a>
-                <a href="#services" class="hover:text-term_purple transition-colors">./servicios</a>
-                <a href="#skills" class="hover:text-term_blue transition-colors">./habilidades</a>
-                <a href="#contact" class="hover:text-white transition-colors">./contacto</a>
-            </div>
+    <div
+      class="fixed inset-0 z-0 pointer-events-none bg-gradient-to-b from-transparent to-term_black/90"
+    ></div>
+    <div class="fixed inset-0 z-0 pointer-events-none grid-overlay"></div>
+    <div
+      class="noise fixed inset-0 z-50 pointer-events-none opacity-[0.03]"
+    ></div>
+
+    <nav
+      class="fixed w-full z-40 top-0 border-b border-term_gray/50 bg-term_black/70 backdrop-blur-md"
+    >
+      <div
+        class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between"
+      >
+        <div class="font-mono font-bold text-term_green tracking-tighter">
+          ~/portfolio<span class="animate-pulse">_</span>
         </div>
+        <div class="hidden md:flex gap-6 text-sm font-mono text-gray-400">
+          <a href="#about" class="hover:text-term_green transition-colors"
+            >./sobre_mi</a
+          >
+          <a href="#services" class="hover:text-term_purple transition-colors"
+            >./servicios</a
+          >
+          <a href="#projects" class="hover:text-term_blue transition-colors"
+            >./proyectos</a
+          >
+          <a href="#skills" class="hover:text-term_blue transition-colors"
+            >./habilidades</a
+          >
+          <a href="#contact" class="hover:text-white transition-colors"
+            >./contacto</a
+          >
+        </div>
+      </div>
     </nav>
 
-    <main class="relative z-10 max-w-5xl mx-auto px-6 pt-32 pb-24 flex flex-col gap-32">
-        
-        <section id="hero" class="min-h-[70vh] flex flex-col justify-center items-start gsap-fade-in">
-            <div class="inline-block px-3 py-1 border border-term_green/30 bg-term_green/10 text-term_green font-mono text-xs rounded-full mb-6 relative overflow-hidden group">
-                <span class="relative z-10">Disponible para oportunidades IT Jr.</span>
-                <div class="absolute inset-0 bg-term_green/20 transform translate-y-full group-hover:translate-y-0 transition-transform"></div>
-            </div>
-            
-            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight leading-tight">
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-term_green via-term_blue to-term_purple glow-text">Diseño Web</span><br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-term_green via-term_blue to-term_purple glow-text">Desarrollo Web</span><br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-term_green via-term_blue to-term_purple glow-text">Soporte IT</span>
-            </h1>
-            
-            <p class="text-xl text-gray-400 max-w-2xl font-light mb-10 border-l-2 border-term_gray pl-4">
-                Resolución de problemas técnicos y creación de soluciones eficientes mediante código limpio e infraestructura confiable.
+    <main
+      class="relative z-10 max-w-5xl mx-auto px-6 pt-32 pb-24 flex flex-col gap-32"
+    >
+      <!-- HERO -->
+      <section
+        id="hero"
+        class="min-h-[70vh] flex flex-col justify-center items-start gsap-fade-in"
+      >
+        <div
+          class="inline-block px-3 py-1 border border-term_green/30 bg-term_green/10 text-term_green font-mono text-xs rounded-full mb-6 relative overflow-hidden group"
+        >
+          <span class="relative z-10">Disponible para oportunidades IT Jr.</span>
+          <div
+            class="absolute inset-0 bg-term_green/20 transform translate-y-full group-hover:translate-y-0 transition-transform"
+          ></div>
+        </div>
+
+        <h1
+          class="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight leading-tight"
+        >
+          <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-term_green via-term_blue to-term_purple glow-text"
+            >Diseño Web</span
+          ><br />
+          <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-term_green via-term_blue to-term_purple glow-text"
+            >Desarrollo Web</span
+          ><br />
+          <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-term_green via-term_blue to-term_purple glow-text"
+            >Soporte IT</span
+          >
+        </h1>
+
+        <p
+          class="text-xl text-gray-400 max-w-2xl font-light mb-10 border-l-2 border-term_gray pl-4"
+        >
+          Resolución de problemas técnicos y creación de soluciones eficientes
+          mediante código limpio e infraestructura confiable.
+        </p>
+
+        <div class="flex gap-4">
+          <a
+            href="#contact"
+            class="px-6 py-3 bg-white text-term_black font-medium rounded-sm hover:bg-gray-200 transition-colors flex items-center gap-2"
+          >
+            Iniciar Contacto
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </section>
+
+      <!-- SOBRE MÍ -->
+      <section id="about" class="gsap-fade-in scroll-mt-24">
+        <h2 class="text-sm font-mono text-term_purple mb-2">
+          01. presentación
+        </h2>
+        <h3 class="text-3xl font-bold text-white mb-8">Sobre mí</h3>
+
+        <div class="grid md:grid-cols-2 gap-12">
+          <div class="space-y-4 text-gray-400 font-light leading-relaxed">
+            <p>
+              Soy un técnico IT en formación, profundamente apasionado por la
+              tecnología, el funcionamiento de los sistemas y la red que nos
+              conecta.
             </p>
-            
-            <div class="flex gap-4">
-                <a href="#contact" class="px-6 py-3 bg-white text-term_black font-medium rounded-sm hover:bg-gray-200 transition-colors flex items-center gap-2">
-                    Iniciar Contacto <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-            </div>
-        </section>
-
-        <section id="about" class="gsap-fade-in scroll-mt-24">
-            <h2 class="text-sm font-mono text-term_purple mb-2">01. presentación</h2>
-            <h3 class="text-3xl font-bold text-white mb-8">Sobre mí</h3>
-            
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="space-y-4 text-gray-400 font-light leading-relaxed">
-                    <p>
-                        Soy un técnico IT en formación, profundamente apasionado por la tecnología, el funcionamiento de los sistemas y la red que nos conecta.
-                    </p>
-                    <p>
-                        Mi enfoque principal es la resolución de problemas lógicos, la adaptabilidad ante nuevos entornos y el aprendizaje continuo. Entiendo la tecnología no solo como herramientas, sino como ecosistemas que requieren mantenimiento, optimización y diseño inteligente.
-                    </p>
-                    <p>
-                        Actualmente ampliando mis conocimientos en áreas fundamentales:
-                    </p>
-                    <ul class="grid grid-cols-2 gap-2 mt-4 font-mono text-sm text-term_green/80">
-                        <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4"></i> S.O Windows y Linux</li>
-                        <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4"></i> Redes LAN/WAN</li>
-                        <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4"></i> Ciberseguridad</li>
-                        <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4"></i> Virtualización</li>
-                        <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4"></i> Diseño/Desarrollo Web</li>
-                        <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4"></i> Soporte IT</li>
-                        <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4"></i> Virtualización</li>
-                        <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4"></i> Administración de datos</li>
-                    </ul>
-                </div>
-                
-                <div class="relative group">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-term_green to-term_purple opacity-20 blur group-hover:opacity-40 transition duration-1000"></div>
-                    <div class="relative h-full border border-term_gray bg-term_black/50 p-6 flex items-center justify-center overflow-hidden">
-                        <div class="font-mono text-xs text-term_gray/40 whitespace-pre-wrap select-none text-center">
-                        <img src="images/img1.jpg" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />/> alt="Tech Solutions"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="services" class="gsap-fade-in scroll-mt-24">
-            <h2 class="text-sm font-mono text-term_blue mb-2">02. módulos</h2>
-            <h3 class="text-3xl font-bold text-white mb-8">Servicios</h3>
-            
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="service-card p-6 border border-term_gray bg-term_gray/10 hover:bg-term_gray/30 transition-all group">
-                    <div class="w-10 h-10 rounded bg-term_green/10 flex items-center justify-center text-term_green mb-4 border border-term_green/20">
-                        <i data-lucide="cpu" class="w-5 h-5"></i>
-                    </div>
-                    <h4 class="text-xl font-semibold text-white mb-2">Soporte IT</h4>
-                    <p class="text-gray-400 text-sm">Diagnóstico y resolución de incidencias en hardware y software. Mantenimiento preventivo y correctivo de equipos.</p>
-                </div>
-
-                <div class="service-card p-6 border border-term_gray bg-term_gray/10 hover:bg-term_gray/30 transition-all group">
-                    <div class="w-10 h-10 rounded bg-term_blue/10 flex items-center justify-center text-term_blue mb-4 border border-term_blue/20">
-                        <i data-lucide="code-2" class="w-5 h-5"></i>
-                    </div>
-                    <h4 class="text-xl font-semibold text-white mb-2">Desarrollo Web</h4>
-                    <p class="text-gray-400 text-sm">Construcción de sitios web modernos, responsivos y optimizados utilizando tecnologías actuales (HTML, CSS, JS, frameworks).</p>
-                </div>
-
-                <div class="service-card p-6 border border-term_gray bg-term_gray/10 hover:bg-term_gray/30 transition-all group">
-                    <div class="w-10 h-10 rounded bg-term_purple/10 flex items-center justify-center text-term_purple mb-4 border border-term_purple/20">
-                        <i data-lucide="layout-template" class="w-5 h-5"></i>
-                    </div>
-                    <h4 class="text-xl font-semibold text-white mb-2">Diseño Web</h4>
-                    <p class="text-gray-400 text-sm">Creación de interfaces limpias, funcionales y centradas en la experiencia del usuario.</p>
-                </div>
-
-                <div class="service-card p-6 border border-term_gray bg-term_gray/10 hover:bg-term_gray/30 transition-all group">
-                    <div class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-white mb-4 border border-white/10">
-                        <i data-lucide="network" class="w-5 h-5"></i>
-                    </div>
-                    <h4 class="text-xl font-semibold text-white mb-2">Redes</h4>
-                    <p class="text-gray-400 text-sm">Instalación y configuración de redes LAN, resolución de problemas de conectividad y gestión de routers/switches.</p>
-                </div>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="service-card p-6 border border-term_gray bg-term_gray/10 hover:bg-term_gray/30 transition-all group">
-                    <div class="w-10 h-10 rounded bg-term_green/10 flex items-center justify-center text-term_green mb-4 border border-term_green/20">
-                        <i data-lucide="wrench" class="w-5 h-5"></i>
-                    </div>
-                    <h4 class="text-xl font-semibold text-white mb-2">Mantenimiento de Equipos</h4>
-                    <p class="text-gray-400 text-sm">Limpieza, optimización y mantenimiento preventivo de computadoras.</p>
-                </div>
-
-                <div class="service-card p-6 border border-term_gray bg-term_gray/10 hover:bg-term_gray/30 transition-all group">
-                    <div class="w-10 h-10 rounded bg-term_blue/10 flex items-center justify-center text-term_blue mb-4 border border-term_blue/20">
-                        <i data-lucide="hard-drive" class="w-5 h-5"></i>
-                    </div>
-                    <h4 class="text-xl font-semibold text-white mb-2">Backup y Recuperación de Datos</h4>
-                    <p class="text-gray-400 text-sm">Respaldo de información y recuperación de datos ante fallos o pérdidas.</p>
-                </div>
-
-                <div class="service-card p-6 border border-term_gray bg-term_gray/10 hover:bg-term_gray/30 transition-all group">
-                    <div class="w-10 h-10 rounded bg-term_purple/10 flex items-center justify-center text-term_purple mb-4 border border-term_purple/20">
-                        <i data-lucide="monitor" class="w-5 h-5"></i>
-                    </div>
-                    <h4 class="text-xl font-semibold text-white mb-2">Instalación de Sistemas Operativos</h4>
-                    <p class="text-gray-400 text-sm">Instalación y configuración de Windows, Linux y entornos personalizados.</p>
-                </div>
-
-                <div class="service-card p-6 border border-term_gray bg-term_gray/10 hover:bg-term_gray/30 transition-all group">
-                    <div class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-white mb-4 border border-white/10">
-                        <i data-lucide="router" class="w-5 h-5"></i>
-                    </div>
-                    <h4 class="text-xl font-semibold text-white mb-2">Configuración de Redes</h4>
-                    <p class="text-gray-400 text-sm">Configuración de routers, WiFi y solución de problemas de conectividad.</p>
-                </div>
-            </div>
-
-                        <div class="grid md:grid-cols-2 gap-6">
-                <div class="service-card p-6 border border-term_gray bg-term_gray/10 hover:bg-term_gray/30 transition-all group">
-                    <div class="w-10 h-10 rounded bg-term_green/10 flex items-center justify-center text-term_green mb-4 border border-term_green/20">
-                        <i data-lucide="cloud" class="w-5 h-5"></i>
-                    </div>
-                    <h4 class="text-xl font-semibold text-white mb-2">Servicios en la Nube</h4>
-                    <p class="text-gray-400 text-sm">Configuración de almacenamiento en la nube y herramientas colaborativas.</p>
-                </div>
-
-                <div class="service-card p-6 border border-term_gray bg-term_gray/10 hover:bg-term_gray/30 transition-all group">
-                    <div class="w-10 h-10 rounded bg-term_blue/10 flex items-center justify-center text-term_blue mb-4 border border-term_blue/20">
-                        <i data-lucide="headphones" class="w-5 h-5"></i>
-                    </div>
-                    <h4 class="text-xl font-semibold text-white mb-2">Soporte Remoto</h4>
-                    <p class="text-gray-400 text-sm">Asistencia técnica remota para resolución rápida de problemas.</p>
-                </div>
-
-                <div class="service-card p-6 border border-term_gray bg-term_gray/10 hover:bg-term_gray/30 transition-all group">
-                    <div class="w-10 h-10 rounded bg-term_purple/10 flex items-center justify-center text-term_purple mb-4 border border-term_purple/20">
-                        <i data-lucide="database" class="w-5 h-5"></i>
-                    </div>
-                    <h4 class="text-xl font-semibold text-white mb-2">Gestión de Bases de Datos</h4>
-                    <p class="text-gray-400 text-sm">Manejo básico de datos, organización y mantenimiento de información.</p>
-                </div>
-
-                <div class="service-card p-6 border border-term_gray bg-term_gray/10 hover:bg-term_gray/30 transition-all group">
-                    <div class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-white mb-4 border border-white/10">
-                        <i data-lucide="shield" class="w-5 h-5"></i>
-                    </div>
-                    <h4 class="text-xl font-semibold text-white mb-2">Ciberseguridad</h4>
-                    <p class="text-gray-400 text-sm">Protección de sistemas y datos mediante la detección de vulnerabilidades, configuración de medidas de seguridad y aplicación de buenas prácticas para prevenir accesos no autorizados y amenazas informáticas.</p>
-                </div>
-            </div>
-
-        </section>
-
-        <section id="skills" class="gsap-fade-in scroll-mt-24">
-            <h2 class="text-sm font-mono text-term_green mb-2">03. parámetros</h2>
-            <h3 class="text-3xl font-bold text-white mb-8">Habilidades</h3>
-            
-            <div class="flex flex-wrap gap-3">
-                <span class="px-4 py-2 border border-term_gray text-gray-300 font-mono text-sm hover:border-term_green hover:text-term_green transition-colors cursor-default">Soporte IT</span>
-                <span class="px-4 py-2 border border-term_gray text-gray-300 font-mono text-sm hover:border-term_blue hover:text-term_blue transition-colors cursor-default">Desarrollo Web</span>
-                <span class="px-4 py-2 border border-term_gray text-gray-300 font-mono text-sm hover:border-term_purple hover:text-term_purple transition-colors cursor-default">Diseño Web</span>
-                <span class="px-4 py-2 border border-term_gray text-gray-300 font-mono text-sm hover:border-white hover:text-white transition-colors cursor-default">Redes LAN/WAN</span>
-                <span class="px-4 py-2 border border-term_gray text-gray-300 font-mono text-sm hover:border-term_green hover:text-term_green transition-colors cursor-default">Sistemas Windows/Linux</span>
-                <span class="px-4 py-2 border border-term_gray text-gray-300 font-mono text-sm hover:border-term_blue hover:text-term_blue transition-colors cursor-default">Resolución de Problemas</span>
-                <span class="px-4 py-2 border border-term_gray text-gray-300 font-mono text-sm hover:border-term_purple hover:text-term_purple transition-colors cursor-default">Hardware/Software</span>
-                <span class="px-4 py-2 border border-term_gray text-gray-300 font-mono text-sm hover:border-term_purple hover:text-term_purple transition-colors cursor-default">Ciberseguridad</span>
-                <span class="px-4 py-2 border border-term_gray text-gray-300 font-mono text-sm hover:border-term_purple hover:text-term_purple transition-colors cursor-default">Virtualización</span>
-            </div>
-        </section>
-
-        <section id="contact" class="gsap-fade-in scroll-mt-24 pb-24">
-            <h2 class="text-sm font-mono text-gray-500 mb-2">04. Comunicación</h2>
-            <h3 class="text-3xl font-bold text-white mb-8">Contacto</h3>
-            
-            <p class="text-gray-400 mb-8 max-w-xl">
-                Actualmente abierto a oportunidades como Junior IT Support | roles entry-level en Desarrollo/Diseño Web. Dispuesto a aprender, aportar y crecer dentro de una estructura profesional.
+            <p>
+              Mi enfoque principal es la resolución de problemas lógicos, la
+              adaptabilidad ante nuevos entornos y el aprendizaje continuo.
+              Entiendo la tecnología no solo como herramientas, sino como
+              ecosistemas que requieren mantenimiento, optimización y diseño
+              inteligente.
             </p>
+            <p>Actualmente ampliando mis conocimientos en áreas fundamentales:</p>
+            <ul
+              class="grid grid-cols-2 gap-2 mt-4 font-mono text-sm text-term_green/80"
+            >
+              <li class="flex items-center gap-2">
+                <i data-lucide="chevron-right" class="w-4 h-4"></i> S.O Windows
+                y Linux
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="chevron-right" class="w-4 h-4"></i> Redes
+                LAN/WAN
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="chevron-right" class="w-4 h-4"></i> Ciberseguridad
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="chevron-right" class="w-4 h-4"></i> Virtualización
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                Diseño/Desarrollo Web
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="chevron-right" class="w-4 h-4"></i> Soporte IT
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                Administración de datos
+              </li>
+            </ul>
+          </div>
 
-            <div class="flex flex-col sm:flex-row gap-4">
-                </a>
-                <a href="https://www.linkedin.com/in/patricio-nicol%C3%A1s-flores-22527b30a/" class="px-6 py-4 border border-term_gray bg-term_black hover:bg-term_gray/30 transition-colors flex items-center justify-between group">
-                    <div class="flex items-center gap-3">
-                        <i data-lucide="linkedin" class="w-5 h-5 text-gray-400 group-hover:text-term_blue transition-colors"></i>
-                        <span class="text-gray-300 group-hover:text-white transition-colors">LinkedIn Profile</span>
-                    </div>
-                    <i data-lucide="external-link" class="w-4 h-4 text-term_gray group-hover:text-term_blue transition-colors"></i>
-                </a>
+          <div class="relative group">
+            <div
+              class="absolute -inset-1 bg-gradient-to-r from-term_green to-term_purple opacity-20 blur group-hover:opacity-40 transition duration-1000"
+            ></div>
+            <div
+              class="relative border border-term_gray bg-term_black/50 overflow-hidden"
+              style="height: 420px"
+            >
+              <img
+                src="images/img2.jpg"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                alt="Tech Solutions"
+              />
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
+      <!-- SERVICIOS -->
+      <section id="services" class="gsap-fade-in scroll-mt-24">
+        <h2 class="text-sm font-mono text-term_blue mb-2">02. módulos</h2>
+        <h3 class="text-3xl font-bold text-white mb-8">Servicios</h3>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div
+            class="service-card p-6 border border-term_gray bg-term_gray/10 hover:bg-term_gray/30 transition-all group"
+          >
+            <div
+              class="w-10 h-10 rounded bg-term_green/10 flex items-center justify-center text-term_green mb-4 border border-term_green/20"
+            >
+              <i data-lucide="cpu" class="w-5 h-5"></i>
+            </div>
+            <h4 class="text-xl font-semibold text-white mb-2">Soporte IT</h4>
+            <p class="text-gray-400 text-sm">
+              Diagnóstico y resolución de incidencias en hardware y software.
+              Mantenimiento preventivo y correctivo de equipos.
+            </p>
+          </div>
+
+          <div
+            class="service-card p-6 border border-term_gray bg-term_gray/10 hover:bg-term_gray/30 transition-all group"
+          >
+            <div
+              class="w-10 h-10 rounded bg-term_blue/10 flex items-center justify-center text-term_blue mb-4 border border-term_blue/20"
+            >
+              <i data-lucide="code-2" class="w-5 h-5"></i>
+            </div>
+            <h4 class="text-xl font-semibold text-white mb-2">
+              Desarrollo Web
+            </h4>
+            <p class="text-gray-400 text-sm">
+              Construcción de sitios web modernos, responsivos y optimizados
+              utilizando tecnologías actuales (HTML, CSS, JS, frameworks).
+            </p>
+          </div>
+
+          <div
+            class="service-card p-6 border border-term_gray bg-term_gray/10 hover:bg-term_gray/30 transition-all group"
+          >
+            <div
+              class="w-10 h-10 rounded bg-term_purple/10 flex items-center justify-center text-term_purple mb-4 border border-term_purple/20"
+            >
+              <i data-lucide="layout-template" class="w-5 h-5"></i>
+            </div>
+            <h4 class="text-xl font-semibold text-white mb-2">Diseño Web</h4>
+            <p class="text-gray-400 text-sm">
+              Creación de interfaces limpias, funcionales y centradas en la
+              experiencia del usuario.
+            </p>
+          </div>
+
+          <div
+            class="service-card p-6 border border-term_gray bg-term_gray/10 hover:bg-term_gray/30 transition-all group"
+          >
+            <div
+              class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-white mb-4 border border-white/10"
+            >
+              <i data-lucide="network" class="w-5 h-5"></i>
+            </div>
+            <h4 class="text-xl font-semibold text-white mb-2">Redes</h4>
+            <p class="text-gray-400 text-sm">
+              Instalación y configuración de redes LAN, resolución de problemas
+              de conectividad y gestión de routers/switches.
+            </p>
+          </div>
+
+          <div
+            class="service-card p-6 border border-term_gray bg-term_gray/10 hover:bg-term_gray/30 transition-all group"
+          >
+            <div
+              class="w-10 h-10 rounded bg-term_green/10 flex items-center justify-center text-term_green mb-4 border border-term_green/20"
+            >
+              <i data-lucide="wrench" class="w-5 h-5"></i>
+            </div>
+            <h4 class="text-xl font-semibold text-white mb-2">
+              Mantenimiento de Equipos
+            </h4>
+            <p class="text-gray-400 text-sm">
+              Limpieza, optimización y mantenimiento preventivo de computadoras.
+            </p>
+          </div>
+
+          <div
+            class="service-card p-6 border border-term_gray bg-term_gray/10 hover:bg-term_gray/30 transition-all group"
+          >
+            <div
+              class="w-10 h-10 rounded bg-term_blue/10 flex items-center justify-center text-term_blue mb-4 border border-term_blue/20"
+            >
+              <i data-lucide="hard-drive" class="w-5 h-5"></i>
+            </div>
+            <h4 class="text-xl font-semibold text-white mb-2">
+              Backup y Recuperación de Datos
+            </h4>
+            <p class="text-gray-400 text-sm">
+              Respaldo de información y recuperación de datos ante fallos o
+              pérdidas.
+            </p>
+          </div>
+
+          <div
+            class="service-card p-6 border border-term_gray bg-term_gray/10 hover:bg-term_gray/30 transition-all group"
+          >
+            <div
+              class="w-10 h-10 rounded bg-term_purple/10 flex items-center justify-center text-term_purple mb-4 border border-term_purple/20"
+            >
+              <i data-lucide="monitor" class="w-5 h-5"></i>
+            </div>
+            <h4 class="text-xl font-semibold text-white mb-2">
+              Instalación de Sistemas Operativos
+            </h4>
+            <p class="text-gray-400 text-sm">
+              Instalación y configuración de Windows, Linux y entornos
+              personalizados.
+            </p>
+          </div>
+
+          <div
+            class="service-card p-6 border border-term_gray bg-term_gray/10 hover:bg-term_gray/30 transition-all group"
+          >
+            <div
+              class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-white mb-4 border border-white/10"
+            >
+              <i data-lucide="router" class="w-5 h-5"></i>
+            </div>
+            <h4 class="text-xl font-semibold text-white mb-2">
+              Configuración de Redes
+            </h4>
+            <p class="text-gray-400 text-sm">
+              Configuración de routers, WiFi y solución de problemas de
+              conectividad.
+            </p>
+          </div>
+
+          <div
+            class="service-card p-6 border border-term_gray bg-term_gray/10 hover:bg-term_gray/30 transition-all group"
+          >
+            <div
+              class="w-10 h-10 rounded bg-term_green/10 flex items-center justify-center text-term_green mb-4 border border-term_green/20"
+            >
+              <i data-lucide="cloud" class="w-5 h-5"></i>
+            </div>
+            <h4 class="text-xl font-semibold text-white mb-2">
+              Servicios en la Nube
+            </h4>
+            <p class="text-gray-400 text-sm">
+              Configuración de almacenamiento en la nube y herramientas
+              colaborativas.
+            </p>
+          </div>
+
+          <div
+            class="service-card p-6 border border-term_gray bg-term_gray/10 hover:bg-term_gray/30 transition-all group"
+          >
+            <div
+              class="w-10 h-10 rounded bg-term_blue/10 flex items-center justify-center text-term_blue mb-4 border border-term_blue/20"
+            >
+              <i data-lucide="headphones" class="w-5 h-5"></i>
+            </div>
+            <h4 class="text-xl font-semibold text-white mb-2">
+              Soporte Remoto
+            </h4>
+            <p class="text-gray-400 text-sm">
+              Asistencia técnica remota para resolución rápida de problemas.
+            </p>
+          </div>
+
+          <div
+            class="service-card p-6 border border-term_gray bg-term_gray/10 hover:bg-term_gray/30 transition-all group"
+          >
+            <div
+              class="w-10 h-10 rounded bg-term_purple/10 flex items-center justify-center text-term_purple mb-4 border border-term_purple/20"
+            >
+              <i data-lucide="database" class="w-5 h-5"></i>
+            </div>
+            <h4 class="text-xl font-semibold text-white mb-2">
+              Gestión de Bases de Datos
+            </h4>
+            <p class="text-gray-400 text-sm">
+              Manejo básico de datos, organización y mantenimiento de
+              información.
+            </p>
+          </div>
+
+          <div
+            class="service-card p-6 border border-term_gray bg-term_gray/10 hover:bg-term_gray/30 transition-all group"
+          >
+            <div
+              class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-white mb-4 border border-white/10"
+            >
+              <i data-lucide="shield" class="w-5 h-5"></i>
+            </div>
+            <h4 class="text-xl font-semibold text-white mb-2">
+              Ciberseguridad
+            </h4>
+            <p class="text-gray-400 text-sm">
+              Protección de sistemas y datos mediante la detección de
+              vulnerabilidades, configuración de medidas de seguridad y
+              aplicación de buenas prácticas para prevenir accesos no
+              autorizados y amenazas informáticas.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROYECTOS -->
+      <section id="projects" class="gsap-fade-in scroll-mt-24">
+        <h2 class="text-sm font-mono text-term_purple mb-2">03. proyectos</h2>
+        <h3 class="text-3xl font-bold text-white mb-8">Proyectos</h3>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="relative group">
+            <div
+              class="absolute -inset-1 bg-gradient-to-r from-term_green to-term_purple opacity-10 blur group-hover:opacity-30 transition duration-1000"
+            ></div>
+            <div
+              class="relative border border-term_gray bg-term_gray/10 p-6 hover:bg-term_gray/20 transition-all"
+            >
+              <div class="flex items-center justify-between mb-4">
+                <i data-lucide="folder" class="w-8 h-8 text-term_green"></i>
+                <a
+                  href="https://github.com/patricio-devtech"
+                  target="_blank"
+                  class="text-gray-500 hover:text-term_green transition-colors"
+                >
+                  <i data-lucide="github" class="w-5 h-5"></i>
+                </a>
+              </div>
+              <h4 class="text-lg font-semibold text-white mb-2">
+                Portfolio Personal
+              </h4>
+              <p class="text-gray-400 text-sm mb-4">
+                Sitio web personal desarrollado con HTML, Tailwind CSS y
+                JavaScript. Incluye animaciones, efectos visuales y diseño
+                responsivo.
+              </p>
+              <div class="flex gap-2 flex-wrap">
+                <span
+                  class="px-2 py-1 text-xs font-mono border border-term_gray text-term_green"
+                  >HTML</span
+                >
+                <span
+                  class="px-2 py-1 text-xs font-mono border border-term_gray text-term_blue"
+                  >Tailwind CSS</span
+                >
+                <span
+                  class="px-2 py-1 text-xs font-mono border border-term_gray text-term_purple"
+                  >JavaScript</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="relative group">
+            <div
+              class="absolute -inset-1 bg-gradient-to-r from-term_gray to-term_gray opacity-10 blur group-hover:opacity-20 transition duration-1000"
+            ></div>
+            <div
+              class="relative border border-term_gray/50 bg-term_gray/5 p-6 flex flex-col items-center justify-center text-center min-h-[200px]"
+            >
+              <i
+                data-lucide="plus-circle"
+                class="w-10 h-10 text-term_gray mb-4"
+              ></i>
+              <h4 class="text-lg font-semibold text-gray-600 mb-2">
+                Próximo Proyecto
+              </h4>
+              <p class="text-gray-600 text-sm">En desarrollo...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HABILIDADES -->
+      <section id="skills" class="gsap-fade-in scroll-mt-24">
+        <h2 class="text-sm font-mono text-term_green mb-2">04. parámetros</h2>
+        <h3 class="text-3xl font-bold text-white mb-8">Habilidades</h3>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between font-mono text-sm mb-2">
+                <span class="text-gray-300">Soporte IT</span>
+                <span class="text-term_green">40%</span>
+              </div>
+              <div class="h-1 bg-term_gray rounded-full overflow-hidden">
+                <div
+                  class="h-full bg-gradient-to-r from-term_green to-term_blue rounded-full"
+                  style="width: 40%"
+                ></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between font-mono text-sm mb-2">
+                <span class="text-gray-300">Desarrollo Web</span>
+                <span class="text-term_green">50%</span>
+              </div>
+              <div class="h-1 bg-term_gray rounded-full overflow-hidden">
+                <div
+                  class="h-full bg-gradient-to-r from-term_green to-term_blue rounded-full"
+                  style="width: 50%"
+                ></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between font-mono text-sm mb-2">
+                <span class="text-gray-300">Diseño Web</span>
+                <span class="text-term_green">50%</span>
+              </div>
+              <div class="h-1 bg-term_gray rounded-full overflow-hidden">
+                <div
+                  class="h-full bg-gradient-to-r from-term_green to-term_blue rounded-full"
+                  style="width: 50%"
+                ></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between font-mono text-sm mb-2">
+                <span class="text-gray-300">Redes LAN/WAN</span>
+                <span class="text-term_green">35%</span>
+              </div>
+              <div class="h-1 bg-term_gray rounded-full overflow-hidden">
+                <div
+                  class="h-full bg-gradient-to-r from-term_green to-term_blue rounded-full"
+                  style="width: 35%"
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between font-mono text-sm mb-2">
+                <span class="text-gray-300">Sistemas Windows/Linux</span>
+                <span class="text-term_purple">40%</span>
+              </div>
+              <div class="h-1 bg-term_gray rounded-full overflow-hidden">
+                <div
+                  class="h-full bg-gradient-to-r from-term_purple to-term_blue rounded-full"
+                  style="width: 40%"
+                ></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between font-mono text-sm mb-2">
+                <span class="text-gray-300">Resolución de Problemas</span>
+                <span class="text-term_purple">60%</span>
+              </div>
+              <div class="h-1 bg-term_gray rounded-full overflow-hidden">
+                <div
+                  class="h-full bg-gradient-to-r from-term_purple to-term_blue rounded-full"
+                  style="width: 60%"
+                ></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between font-mono text-sm mb-2">
+                <span class="text-gray-300">Hardware/Software</span>
+                <span class="text-term_purple">40%</span>
+              </div>
+              <div class="h-1 bg-term_gray rounded-full overflow-hidden">
+                <div
+                  class="h-full bg-gradient-to-r from-term_purple to-term_blue rounded-full"
+                  style="width: 40%"
+                ></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between font-mono text-sm mb-2">
+                <span class="text-gray-300">Ciberseguridad</span>
+                <span class="text-term_purple">25%</span>
+              </div>
+              <div class="h-1 bg-term_gray rounded-full overflow-hidden">
+                <div
+                  class="h-full bg-gradient-to-r from-term_purple to-term_blue rounded-full"
+                  style="width: 25%"
+                ></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between font-mono text-sm mb-2">
+                <span class="text-gray-300">Virtualización</span>
+                <span class="text-term_purple">25%</span>
+              </div>
+              <div class="h-1 bg-term_gray rounded-full overflow-hidden">
+                <div
+                  class="h-full bg-gradient-to-r from-term_purple to-term_blue rounded-full"
+                  style="width: 25%"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACTO -->
+      <section id="contact" class="gsap-fade-in scroll-mt-24 pb-24">
+        <h2 class="text-sm font-mono text-term_green mb-2">05. Comunicación</h2>
+        <h3 class="text-3xl font-bold text-white mb-8">Contacto</h3>
+
+        <p class="text-gray-400 mb-8 max-w-xl">
+          Actualmente abierto a oportunidades como Junior IT Support | roles
+          entry-level en Desarrollo/Diseño Web. Dispuesto a aprender, aportar y
+          crecer dentro de una estructura profesional.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a
+            href="https://github.com/patricio-devtech"
+            target="_blank"
+            class="px-6 py-4 border border-term_gray bg-term_black hover:bg-term_gray/30 transition-colors flex items-center justify-between group"
+          >
+            <div class="flex items-center gap-3">
+              <i
+                data-lucide="github"
+                class="w-5 h-5 text-gray-400 group-hover:text-term_green transition-colors"
+              ></i>
+              <span class="text-gray-300 group-hover:text-white transition-colors"
+                >GitHub Profile</span
+              >
+            </div>
+            <i
+              data-lucide="external-link"
+              class="w-4 h-4 text-term_gray group-hover:text-term_green transition-colors"
+            ></i>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/patricio-nicol%C3%A1s-flores-22527b30a/"
+            target="_blank"
+            class="px-6 py-4 border border-term_gray bg-term_black hover:bg-term_gray/30 transition-colors flex items-center justify-between group"
+          >
+            <div class="flex items-center gap-3">
+              <i
+                data-lucide="linkedin"
+                class="w-5 h-5 text-gray-400 group-hover:text-term_blue transition-colors"
+              ></i>
+              <span class="text-gray-300 group-hover:text-white transition-colors"
+                >LinkedIn Profile</span
+              >
+            </div>
+            <i
+              data-lucide="external-link"
+              class="w-4 h-4 text-term_gray group-hover:text-term_blue transition-colors"
+            ></i>
+          </a>
+        </div>
+      </section>
     </main>
 
-    <footer class="border-t border-term_gray/50 mt-auto py-8 relative z-10 bg-term_black">
-        <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm font-mono text-gray-600">
-            <div><span class="text-term_green">sys.status:</span> online</div>
-            <div>&copy; 2026. Minimal Tech Identity.</div>
-        </div>
+    <footer
+      class="border-t border-term_gray/50 mt-auto py-8 relative z-10 bg-term_black"
+    >
+      <div
+        class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm font-mono text-gray-600"
+      >
+        <div><span class="text-term_green">sys.status:</span> online</div>
+        <div>&copy; 2026. Minimal Tech Identity.</div>
+      </div>
     </footer>
 
     <script type="module" src="script.js"></script>
-</body>
+  </body>
 </html>
