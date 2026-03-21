@@ -58,27 +58,86 @@
         <div class="font-mono font-bold text-term_green tracking-tighter">
           ~/portfolio<span class="animate-pulse">_</span>
         </div>
-<div class="hidden md:flex gap-6 text-sm font-mono text-gray-400">
-  <a href="#about" class="hover:text-term_green transition-colors">./sobre_mi</a>
-  <a href="#services" class="hover:text-term_purple transition-colors">./servicios</a>
-  <a href="#projects" class="hover:text-term_blue transition-colors">./proyectos</a>
-  <a href="#skills" class="hover:text-term_blue transition-colors">./habilidades</a>
-  <a href="#contact" class="hover:text-white transition-colors">./contacto</a>
-</div>
 
-<button id="menu-btn" class="md:hidden flex flex-col gap-1.5 p-2">
-  <span class="w-6 h-px bg-term_green block transition-all"></span>
-  <span class="w-6 h-px bg-term_green block transition-all"></span>
-  <span class="w-6 h-px bg-term_green block transition-all"></span>
-</button>
+        <div class="hidden md:flex gap-6 text-sm font-mono text-gray-400">
+          <a
+            href="#about"
+            class="relative hover:text-term_green transition-colors group"
+            >./sobre_mi
+            <span
+              class="absolute -bottom-1 left-0 w-0 h-px bg-term_green group-hover:w-full transition-all duration-300"
+            ></span>
+          </a>
+          <a
+            href="#services"
+            class="relative hover:text-term_purple transition-colors group"
+            >./servicios
+            <span
+              class="absolute -bottom-1 left-0 w-0 h-px bg-term_purple group-hover:w-full transition-all duration-300"
+            ></span>
+          </a>
+          <a
+            href="#projects"
+            class="relative hover:text-term_blue transition-colors group"
+            >./proyectos
+            <span
+              class="absolute -bottom-1 left-0 w-0 h-px bg-term_blue group-hover:w-full transition-all duration-300"
+            ></span>
+          </a>
+          <a
+            href="#skills"
+            class="relative hover:text-term_blue transition-colors group"
+            >./habilidades
+            <span
+              class="absolute -bottom-1 left-0 w-0 h-px bg-term_blue group-hover:w-full transition-all duration-300"
+            ></span>
+          </a>
+          <a
+            href="#contact"
+            class="relative hover:text-white transition-colors group"
+            >./contacto
+            <span
+              class="absolute -bottom-1 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-300"
+            ></span>
+          </a>
+        </div>
 
-<div id="mobile-menu" class="hidden fixed top-16 left-0 w-full bg-term_black/95 border-b border-term_gray/50 backdrop-blur-md z-40 font-mono text-sm">
-  <a href="#about" class="px-6 py-4 border-b border-term_gray/30 text-gray-400 hover:text-term_green hover:bg-term_gray/20 transition-colors block">./sobre_mi</a>
-  <a href="#services" class="px-6 py-4 border-b border-term_gray/30 text-gray-400 hover:text-term_purple hover:bg-term_gray/20 transition-colors block">./servicios</a>
-  <a href="#projects" class="px-6 py-4 border-b border-term_gray/30 text-gray-400 hover:text-term_blue hover:bg-term_gray/20 transition-colors block">./proyectos</a>
-  <a href="#skills" class="px-6 py-4 border-b border-term_gray/30 text-gray-400 hover:text-term_blue hover:bg-term_gray/20 transition-colors block">./habilidades</a>
-  <a href="#contact" class="px-6 py-4 text-gray-400 hover:text-white hover:bg-term_gray/20 transition-colors block">./contacto</a>
-</div>
+        <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 p-2">
+          <span class="w-6 h-px bg-term_green block transition-all"></span>
+          <span class="w-6 h-px bg-term_green block transition-all"></span>
+          <span class="w-6 h-px bg-term_green block transition-all"></span>
+        </button>
+
+        <div
+          id="mobile-menu"
+          class="hidden fixed top-16 left-0 w-full bg-term_black/95 border-b border-term_gray/50 backdrop-blur-md z-40 font-mono text-sm"
+        >
+          <a
+            href="#about"
+            class="px-6 py-4 border-b border-term_gray/30 text-gray-400 hover:text-term_green hover:bg-term_gray/20 transition-colors block"
+            >./sobre_mi</a
+          >
+          <a
+            href="#services"
+            class="px-6 py-4 border-b border-term_gray/30 text-gray-400 hover:text-term_purple hover:bg-term_gray/20 transition-colors block"
+            >./servicios</a
+          >
+          <a
+            href="#projects"
+            class="px-6 py-4 border-b border-term_gray/30 text-gray-400 hover:text-term_blue hover:bg-term_gray/20 transition-colors block"
+            >./proyectos</a
+          >
+          <a
+            href="#skills"
+            class="px-6 py-4 border-b border-term_gray/30 text-gray-400 hover:text-term_blue hover:bg-term_gray/20 transition-colors block"
+            >./habilidades</a
+          >
+          <a
+            href="#contact"
+            class="px-6 py-4 text-gray-400 hover:text-white hover:bg-term_gray/20 transition-colors block"
+            >./contacto</a
+          >
+        </div>
       </div>
     </nav>
 
@@ -93,9 +152,7 @@
         <div
           class="inline-block px-3 py-1 border border-term_green/30 bg-term_green/10 text-term_green font-mono text-xs rounded-full mb-6 relative overflow-hidden group"
         >
-          <span class="relative z-10"
-            >Disponible para oportunidades IT Jr.</span
-          >
+          <span class="relative z-10">Disponible para oportunidades IT Jr.</span>
           <div
             class="absolute inset-0 bg-term_green/20 transform translate-y-full group-hover:translate-y-0 transition-transform"
           ></div>
@@ -128,10 +185,16 @@
         <div class="flex gap-4">
           <a
             href="#contact"
-            class="px-6 py-3 bg-white text-term_black font-medium rounded-sm hover:bg-gray-200 transition-colors flex items-center gap-2"
+            class="relative px-6 py-3 font-mono font-medium text-term_green border border-term_green/50 overflow-hidden flex items-center gap-2 group transition-all duration-300 hover:border-term_green hover:shadow-[0_0_20px_rgba(74,222,128,0.3)]"
           >
-            Iniciar Contacto
-            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            <span
+              class="absolute inset-0 bg-gradient-to-r from-term_green/10 to-term_purple/10 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500"
+            ></span>
+            <span class="relative z-10">Iniciar Contacto</span>
+            <i
+              data-lucide="arrow-right"
+              class="w-4 h-4 relative z-10 transition-transform duration-300 group-hover:translate-x-1"
+            ></i>
           </a>
         </div>
       </section>
@@ -156,9 +219,7 @@
               adaptabilidad ante nuevos desafíos. Cada proyecto y cada estudio
               es un paso más hacia convertirme en un profesional IT completo.
             </p>
-            <p>
-              Actualmente ampliando mis conocimientos en áreas fundamentales:
-            </p>
+            <p>Actualmente ampliando mis conocimientos en áreas fundamentales:</p>
             <ul
               class="grid grid-cols-2 gap-2 mt-4 font-mono text-sm text-term_green/80"
             >
@@ -198,7 +259,7 @@
             ></div>
             <div
               class="relative border border-term_gray bg-term_black/50 overflow-hidden"
-              style="height: 420px; max-height: 60vw;"
+              style="height: 420px; max-height: 60vw"
             >
               <img
                 src="images/img2.jpg"
@@ -623,41 +684,48 @@
           <a
             href="https://github.com/patricio-devtech"
             target="_blank"
-            class="px-6 py-4 border border-term_gray bg-term_black hover:bg-term_gray/30 transition-colors flex items-center justify-between group"
+            class="relative px-6 py-4 border border-term_gray/50 overflow-hidden flex items-center justify-between group transition-all duration-300 hover:border-term_green hover:shadow-[0_0_20px_rgba(74,222,128,0.2)]"
           >
-            <div class="flex items-center gap-3">
+            <span
+              class="absolute inset-0 bg-gradient-to-r from-term_green/10 to-term_blue/10 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500"
+            ></span>
+            <div class="flex items-center gap-3 relative z-10">
               <i
                 data-lucide="github"
                 class="w-5 h-5 text-gray-400 group-hover:text-term_green transition-colors"
               ></i>
               <span
-                class="text-gray-300 group-hover:text-white transition-colors"
+                class="text-gray-300 group-hover:text-white transition-colors font-mono text-sm"
                 >GitHub Profile</span
               >
             </div>
             <i
               data-lucide="external-link"
-              class="w-4 h-4 text-term_gray group-hover:text-term_green transition-colors"
+              class="w-4 h-4 text-term_gray group-hover:text-term_green transition-colors relative z-10 group-hover:translate-x-1 duration-300"
             ></i>
           </a>
+
           <a
             href="https://www.linkedin.com/in/patricio-nicol%C3%A1s-flores-22527b30a/"
             target="_blank"
-            class="px-6 py-4 border border-term_gray bg-term_black hover:bg-term_gray/30 transition-colors flex items-center justify-between group"
+            class="relative px-6 py-4 border border-term_gray/50 overflow-hidden flex items-center justify-between group transition-all duration-300 hover:border-term_blue hover:shadow-[0_0_20px_rgba(96,165,250,0.2)]"
           >
-            <div class="flex items-center gap-3">
+            <span
+              class="absolute inset-0 bg-gradient-to-r from-term_blue/10 to-term_purple/10 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500"
+            ></span>
+            <div class="flex items-center gap-3 relative z-10">
               <i
                 data-lucide="linkedin"
                 class="w-5 h-5 text-gray-400 group-hover:text-term_blue transition-colors"
               ></i>
               <span
-                class="text-gray-300 group-hover:text-white transition-colors"
+                class="text-gray-300 group-hover:text-white transition-colors font-mono text-sm"
                 >LinkedIn Profile</span
               >
             </div>
             <i
               data-lucide="external-link"
-              class="w-4 h-4 text-term_gray group-hover:text-term_blue transition-colors"
+              class="w-4 h-4 text-term_gray group-hover:text-term_blue transition-colors relative z-10 group-hover:translate-x-1 duration-300"
             ></i>
           </a>
         </div>
