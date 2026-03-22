@@ -62,24 +62,48 @@ body {
   left: 0;
   width: 2px;
   height: 100%;
-  background: #4ade80;
   transform: scaleY(0);
   transform-origin: top;
   transition: transform 0.3s ease;
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
 .service-card:hover::before {
   transform: scaleY(1);
 }
 
-/* Specific glows for cards */
-.service-card:nth-child(2):hover::before {
-  background: #60a5fa;
-}
-.service-card:nth-child(3):hover::before {
-  background: #c084fc;
-}
-.service-card:nth-child(4):hover::before {
-  background: #ffffff;
-}
+/* Soporte IT - verde */
+.service-card:nth-child(1)::before { background: #4ade80; }
+
+/* Desarrollo Web - azul */
+.service-card:nth-child(2)::before { background: #60a5fa; }
+
+/* Diseño Web - púrpura */
+.service-card:nth-child(3)::before { background: #c084fc; }
+
+/* Redes - blanco */
+.service-card:nth-child(4)::before { background: #ffffff; }
+
+/* Mantenimiento - verde */
+.service-card:nth-child(5)::before { background: #4ade80; }
+
+/* Backup - azul */
+.service-card:nth-child(6)::before { background: #60a5fa; }
+
+/* Instalación SO - púrpura */
+.service-card:nth-child(7)::before { background: #c084fc; }
+
+/* Configuración Redes - blanco */
+.service-card:nth-child(8)::before { background: #ffffff; }
+
+/* Servicios Nube - verde */
+.service-card:nth-child(9)::before { background: #4ade80; }
+
+/* Soporte Remoto - azul */
+.service-card:nth-child(10)::before { background: #60a5fa; }
+
+/* Gestión Bases de Datos - púrpura */
+.service-card:nth-child(11)::before { background: #c084fc; }
+
+/* Ciberseguridad - blanco */
+.service-card:nth-child(12)::before { background: #ffffff; }
